@@ -1,0 +1,32 @@
+{
+  "/Users/jennal/Documents/Work/What2d/GoPlay.Unity/Assets/./Excels/Enums.xlsx": {
+    "ExportCSharpTime": "2023-09-11T01:15:30.781489+08:00",
+    "ExportDataTime": "2023-09-11T01:26:07.707025+08:00",
+    "ModifiedTime": "2023-09-11T01:10:11.2969565+08:00",
+    "SheetEntities": []
+  },
+  "/Users/jennal/Documents/Work/What2d/GoPlay.Unity/Assets/./Excels/UI资源表.xlsx": {
+    "ExportCSharpTime": "2023-09-11T01:15:30.781491+08:00",
+    "ExportDataTime": "2023-09-11T01:26:07.70703+08:00",
+    "ModifiedTime": "2023-09-08T23:32:21.6589041+08:00",
+    "SheetEntities": [
+      "UIAssetsConf@zh_cn"
+    ]
+  },
+  "/Users/jennal/Documents/Work/What2d/GoPlay.Unity/Assets/./Excels/全局设置表.xlsx": {
+    "ExportCSharpTime": "2023-09-11T01:15:30.781493+08:00",
+    "ExportDataTime": "2023-09-11T01:26:07.707032+08:00",
+    "ModifiedTime": "2023-09-11T01:12:01.1469816+08:00",
+    "SheetEntities": [
+      "SettingConf@zh_cn",
+      "QualityConf@zh_cn",
+      "BattleClassConf@zh_cn"
+    ]
+  },
+  "/Users/jennal/Documents/Work/What2d/GoPlay.Unity/Assets/./Excels/引导表.xlsx": {
+    "ExportCSharpTime": "2023-09-11T01:15:30.781494+08:00",
+    "ExportDataTime": "2023-09-11T01:26:07.707033+08:00",
+    "ModifiedTime": "2023-09-11T00:58:06.4443254+08:00",
+    "SheetEntities": []
+  }
+}
