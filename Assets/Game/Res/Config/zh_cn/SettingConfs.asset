@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77dd35c4a4a24a3ba11e9a84b415db5, type: 3}
+  m_Name: SettingConfs
+  m_EditorClassIdentifier: 
+  Values:
+  - Id: 1
+    Value: 
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 2
+    Value: 4
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 3
+    Value: 1000
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 4
+    Value: 10
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 5
+    Value: 1.5
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 6
+    Value: 2
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 7
+    Value: 7
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 8
+    Value: 0.5
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 9
+    Value: 0.5
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 10
+    Value: 1
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 11
+    Value: 0.3
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 12
+    Value: 0.7
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 13
+    Value: 6
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 14
+    Value: 
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 15
+    Value: 8
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 16
+    Value: 
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 17
+    Value: 200;6|200;6|200;6
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 18
+    Value: 100;30|300;40|500;50
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 19
+    Value: 20001
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 20
+    Value: 360
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 21
+    Value: 3.2
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 22
+    Value: 2.9
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 23
+    Value: 3
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 24
+    Value: 5
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 30
+    Value: 0|1|5|10|20|40|70|100|200|500|800|1000|2000|4000|5000|10000|20000|50000|100000|200000|500000|1000000|2000000|5000000|10000000|20000000|50000000|100000000|200000000|500000000|100000000|200000000|500000000|1000000000|2000000000|-1
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 31
+    Value: 
+    Res:
+      AssetBundle: 
+      AssetName: 
+  - Id: 32
+    Value: 0;1|60;2|120;3|150;4|180;5
+    Res:
+      AssetBundle: 
+      AssetName: 

@@ -21,8 +21,11 @@ namespace GoPlay.Managers
         
         public static IUIAssetConf GetUIAssetByClasName(string className)
         {
+            Instance.InitUIAssets();
             if (s_IUIAssets == null) return null;
-            return s_IUIAssets.FirstOrDefault(o => o.ClassName == className);
+            return s_IUIAssets.FirstOrDefault(o => o.UIClassName == className);
         }
+
+        partial void InitUIAssets();
     }
 }

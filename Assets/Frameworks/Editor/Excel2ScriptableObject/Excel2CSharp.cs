@@ -150,7 +150,11 @@ namespace GoPlay.Data.Config
 ";
 
         private const string FIELDS_MANAGER_TEMPLATE =
-            @"        [ShowInInspector] private {typeName}s {privateName};
+            @"
+#if ODIN_INSPECTOR_3
+        [ShowInInspector]
+#endif 
+        private {typeName}s {privateName};
         public static List<{typeName}> {typeName}s {
             get 
             {                
@@ -169,7 +173,9 @@ namespace GoPlay.Data.Config
 using System.Collections.Generic;
 using GoPlay.AssetManagement.Loaders;
 using GoPlay.Data.Config;
+#if ODIN_INSPECTOR_3
 using Sirenix.OdinInspector;
+#endif
 
 namespace GoPlay.Managers
 {

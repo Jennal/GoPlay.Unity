@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec8eb283e4c8c4450ab1a574756ffb64, type: 3}
+  m_Name: UIAssetsConfs
+  m_EditorClassIdentifier: 
+  Values:
+  - Guid: 3718a7e28b8564d4d9464a9c10dcf2d8
+    Assetbundle: battle.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Battle/BossEncounterUI.prefab
+    ClassName: BossEncounterWindow
+  - Guid: cb1177f0de56b5444891010971ef6280
+    Assetbundle: battle.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Battle/CardBattleWindow.prefab
+    ClassName: CardBattleWindow
+  - Guid: aee8f98b26d558b48a9f9fc3b5752fb0
+    Assetbundle: battle.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Battle/StageLoseWindow.prefab
+    ClassName: StageLoseWindow
+  - Guid: 7bd311f592695ae4d9290faf540d3c0f
+    Assetbundle: battle.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Battle/StageWinWindow.prefab
+    ClassName: StageWinWindow
+  - Guid: a90c4eda1663dc046933c3604cfd19ef
+    Assetbundle: battle.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Battle/UIBattleWindow.prefab
+    ClassName: UIBattleWindow
+  - Guid: fc1287a4fead4004cace9c3d30b14f23
+    Assetbundle: battle.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Battle/UIPrepareWindow.prefab
+    ClassName: UIPrepareWindow
+  - Guid: 727384f9f7faaab46859495df907be2c
+    Assetbundle: battle.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/BattleHz/UIBattleHzWindow.prefab
+    ClassName: BattleHzWindow
+  - Guid: 4e72d8cacbb4c354890feb148338e64a
+    Assetbundle: battle.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/SOGBattle/SOGPrepareWindow.prefab
+    ClassName: SOGPrapareWindow
+  - Guid: cff80d35d5cf31d4684e4c29a50ccd2e
+    Assetbundle: battle.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/UITips.prefab
+    ClassName: UITips
+  - Guid: 990229efc1a9a464486bcd0bfd995f21
+    Assetbundle: common.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Widgets/ItemAddtionWidget/IAW_StarNote.prefab
+    ClassName: StarRewardNote
+  - Guid: 8fe135d5985b5364089ac2bc9ae57661
+    Assetbundle: common.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Common/BuyItemWindow.prefab
+    ClassName: BuyItemWindow
+  - Guid: 30f7bf5325f19a446a9e4818af243fef
+    Assetbundle: common.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Common/ItemDescribePop.prefab
+    ClassName: ItemDescribePopWindow
+  - Guid: 4c21340999394c54da6b69fced1fd0ca
+    Assetbundle: common.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Common/ReconnectWindow.prefab
+    ClassName: DisconnectedWindow
+  - Guid: d2bab95d925f223439b9d68023bb1101
+    Assetbundle: common.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Common/UILoading.prefab
+    ClassName: LoadingWindow
+  - Guid: 6325962553becad45b9b658eae2966bf
+    Assetbundle: common.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Lobby/LobbyWindow.prefab
+    ClassName: LobbyMainWindow
+  - Guid: d2280b5807626c442acb0ea6440b6cfd
+    Assetbundle: login.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/Login/UILoginWindow.prefab
+    ClassName: UILoginWindow
+  - Guid: 4de2b40cce418074e8251093d19c2e23
+    Assetbundle: mainline.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/MainLine/ChapterSelectWindow.prefab
+    ClassName: MainLineChapterSelectWindow
+  - Guid: 7070accb4e294624bacb4c70ba0cfa80
+    Assetbundle: mainline.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/MainLine/MainLineMainWindow.prefab
+    ClassName: MainLineMainWindow
+  - Guid: 20065ce9ec1fa3340911277cabcc5652
+    Assetbundle: mainline.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/MainLine/MainlineQuickBattleWindow.prefab
+    ClassName: MainlineQuickBattleWindow
+  - Guid: 96316b4bf6f4d7948bb515d6ffb1602d
+    Assetbundle: mainline.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/MainLine/MainlineSubmitWindow.prefab
+    ClassName: MainlineSubmitWindow
+  - Guid: faa4298624647264a98ec038b7ac9907
+    Assetbundle: mainline.zh_cn
+    Asset: Assets/Game/Res/Prefabs/UI/Windows/MainLine/StageInfoPopup.prefab
+    ClassName: MainLineStageInfoWindow
+  - Guid: a10801f507195e44088489197ed71249
+    Assetbundle: tutorials.zh_cn
+    Asset: Assets/Game/Res/Tutorial/Display/Prefabs/ui_tutorial_arrow.prefab
+    ClassName: UITutorialArrow
+  - Guid: a9a887dad6ca92a4ca6155e15012defd
+    Assetbundle: tutorials.zh_cn
+    Asset: Assets/Game/Res/Tutorial/Display/Prefabs/ui_tutorial_drag.prefab
+    ClassName: UITutorialDrag
+  - Guid: f4a4d9b92da7b8040b213158555979d6
+    Assetbundle: tutorials.zh_cn
+    Asset: Assets/Game/Res/Tutorial/Display/Prefabs/ui_tutorial_mask.prefab
+    ClassName: UITutorialMask
+  - Guid: 8ac2431e680da874d8c30509e2aa1364
+    Assetbundle: tutorials.zh_cn
+    Asset: Assets/Game/Res/Tutorial/Display/Prefabs/ui_tutorial_tips.prefab
+    ClassName: UITutorialTips

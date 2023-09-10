@@ -105,7 +105,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
             ExporterUtils.ShowInfo("Export Complete!");
         }
 
-        // [MenuItem("Excel/Export Assets", false, 4)]
+        [MenuItem("Excel/Export Assets", false, 4)]
         static void Execute()
         {
             PrepareHooks();

@@ -36,7 +36,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
             "GoPlay"
         };
         
-        public static readonly string confFile = Path.Combine("Assets/Game/Plugins/Editor/Excel2ScriptableObject/Resources/Excel2Unity.asset");
+        public static readonly string confFile = Path.Combine("Assets/Frameworks/Editor/Excel2ScriptableObject/Resources/Excel2Unity.asset");
 
         public static string xlsFolder
         {

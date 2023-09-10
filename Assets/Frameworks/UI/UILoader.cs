@@ -12,26 +12,26 @@ namespace GoPlay.Framework.UI
             where T : UIPanel
         {
             var conf = ConfigData.GetUIAssetByClasName(typeof(T).Name);
-            return AssetManager.Instance.LoadPrefab(conf.Assetbundle, conf.Asset);
+            return AssetManager.Instance.LoadPrefab(conf.UIAssetbundle, conf.UIAsset);
         }
         
         public static Task<GameObject> LoadAsync<T>()
             where T : UIPanel
         {
             var conf = ConfigData.GetUIAssetByClasName(typeof(T).Name);
-            return AssetManager.Instance.LoadAssetAsync<GameObject>(conf.Assetbundle, conf.Asset);
+            return AssetManager.Instance.LoadAssetAsync<GameObject>(conf.UIAssetbundle, conf.UIAsset);
         }
         
         public static GameObject Load(string typeName)
         {
             var conf = ConfigData.GetUIAssetByClasName(typeName);
-            return AssetManager.Instance.LoadPrefab(conf.Assetbundle, conf.Asset);
+            return AssetManager.Instance.LoadPrefab(conf.UIAssetbundle, conf.UIAsset);
         }
         
         public static async Task<GameObject> LoadAsync(string typeName)
         {
             var conf = ConfigData.GetUIAssetByClasName(typeName);
-            return await AssetManager.Instance.LoadAssetAsync<GameObject>(conf.Assetbundle, conf.Asset);
+            return await AssetManager.Instance.LoadAssetAsync<GameObject>(conf.UIAssetbundle, conf.UIAsset);
         }
     }
 }

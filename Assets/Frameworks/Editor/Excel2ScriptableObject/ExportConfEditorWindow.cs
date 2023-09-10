@@ -98,11 +98,19 @@ namespace GoPlay.Editor.Excel2ScriptableObject
 
             if (string.IsNullOrEmpty(basePath)) return xlsFolder;
 
-            xlsFolder = xlsFolder.Replace(basePath, "");
-            for (var i = 0; i < count; i++)
+            if (count == 0 && xlsFolder.StartsWith(basePath))
             {
-                if (xlsFolder.StartsWith("/")) xlsFolder = xlsFolder.Substring(1);
-                xlsFolder = "../" + xlsFolder;
+                xlsFolder = xlsFolder.Replace(basePath, "");
+                if (xlsFolder.StartsWith("/")) xlsFolder = "." + xlsFolder;
+            }
+            else
+            {
+                xlsFolder = xlsFolder.Replace(basePath, "");
+                for (var i = 0; i < count; i++)
+                {
+                    if (xlsFolder.StartsWith("/")) xlsFolder = xlsFolder.Substring(1);
+                    xlsFolder = "../" + xlsFolder;
+                }
             }
 
             return xlsFolder;
