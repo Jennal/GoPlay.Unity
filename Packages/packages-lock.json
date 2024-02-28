@@ -7,6 +7,15 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.tencent.puerts.ts-loader": {
+      "version": "2.0.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.tencent.puerts.core": "2.0.4"
+      },
+      "url": "https://package.openupm.com"
+    },
     "com.unity.2d.animation": {
       "version": "9.1.0",
       "depth": 1,
