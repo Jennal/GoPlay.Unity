@@ -5,7 +5,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
 {
     public class Excel2Unity
     {
-        [MenuItem("Excel/Generate All In Once", false, 1)]
+        [MenuItem("GoPlay/Excel/Generate All In Once", false, 1)]
         public static void Execute()
         {
             FileUtil.DeleteFileOrDirectory(ExporterConsts.cacheFile);

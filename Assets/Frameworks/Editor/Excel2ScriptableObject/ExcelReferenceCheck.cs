@@ -13,7 +13,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
 {
     public class ExcelReferenceCheck
     {
-        [MenuItem("Excel/Check Update Reference", false, 100)]
+        [MenuItem("GoPlay/Excel/Check Update Reference", false, 100)]
         public static void CheckUpdateReference()
         {
             var lines = CheckReference(false);
@@ -22,7 +22,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
             EditorUtility.DisplayDialog("Update Reference", content, "OK");
         }
 
-        [MenuItem("Excel/Check All Reference", false, 101)]
+        [MenuItem("GoPlay/Excel/Check All Reference", false, 101)]
         public static void CheckAllReference()
         {
             var lines = CheckReference(true);

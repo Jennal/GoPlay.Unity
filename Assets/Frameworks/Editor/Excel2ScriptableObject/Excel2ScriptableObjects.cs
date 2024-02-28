@@ -40,7 +40,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
         //Struct
 //        public static Dictionary<string, string> refKeyMap;
 
-        [MenuItem("Excel/Clear Cache", false, 9)]
+        [MenuItem("GoPlay/Excel/Clear Cache", false, 9)]
         static void ExecuteClearCacheFile() {
             FileUtil.DeleteFileOrDirectory(ExporterConsts.cacheFile);
             // Debug.Log ("缓存已清除");
@@ -105,7 +105,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
             ExporterUtils.ShowInfo("Export Complete!");
         }
 
-        [MenuItem("Excel/Export Assets", false, 4)]
+        [MenuItem("GoPlay/Excel/Export Assets", false, 4)]
         static void Execute()
         {
             PrepareHooks();

@@ -423,7 +423,7 @@ Used Time: {report.summary.buildEndedAt.Subtract(report.summary.buildStartedAt)}
             return offset;
         }
 
-        // [MenuItem("Build/Db/Copy Db to StreamingAssets")]
+        // [MenuItem("GoPlay/Build/Db/Copy Db to StreamingAssets")]
         // static void CopyDbFile()
         // {
         //     LogFormat("Copying Data File...");
@@ -436,52 +436,52 @@ Used Time: {report.summary.buildEndedAt.Subtract(report.summary.buildStartedAt)}
         //     EditorUtility.DisplayDialog("", "Copy Data File Done!", "OK");
         // }
 
-        [MenuItem("Build/Build Specific/Android")]
+        [MenuItem("GoPlay/Build/Build Specific/Android")]
         static void BuildAndroid()
         {
             PlayerSettings.Android.useAPKExpansionFiles = false;
             DefaultBuild(BuildTarget.Android);
         }
         
-        [MenuItem("Build/Build Specific/Android Review")]
+        [MenuItem("GoPlay/Build/Build Specific/Android Review")]
         static void BuildAndroidReview()
         {
             PlayerSettings.Android.useAPKExpansionFiles = false;
             DefaultBuild(BuildTarget.Android, "_review", ".review");
         }
 
-        [MenuItem("Build/Build Specific/Android Google Play")]
+        [MenuItem("GoPlay/Build/Build Specific/Android Google Play")]
         static void BuildAndroidGooglePlay()
         {
             PlayerSettings.Android.useAPKExpansionFiles = true;
             DefaultBuild(BuildTarget.Android, "_google_play");
         }
 
-        [MenuItem("Build/Assetbundle/Android")]
+        [MenuItem("GoPlay/Build/Assetbundle/Android")]
         static void BuildAssetbundleAndroid()
         {
             BuildAssetBundle(BuildTarget.Android);
         }
 
-        [MenuItem("Build/Assetbundle/Windows")]
+        [MenuItem("GoPlay/Build/Assetbundle/Windows")]
         static void BuildAssetbundleWindows()
         {
             BuildAssetBundle(BuildTarget.StandaloneWindows);
         }
 
-        //[MenuItem("Build/Build Specific/Build Win32")]
+        //[MenuItem("GoPlay/Build/Build Specific/Build Win32")]
         //static void BuildWin32()
         //{
         //    DefaultBuild(BuildTarget.StandaloneWindows);
         //}
 
-        //[MenuItem("Build/Build Specific/Build Win64")]
+        //[MenuItem("GoPlay/Build/Build Specific/Build Win64")]
         //static void BuildWin64()
         //{
         //    DefaultBuild(BuildTarget.StandaloneWindows64);
         //}
 
-        // [MenuItem("Build/Test")]
+        // [MenuItem("GoPlay/Build/Test")]
         // static void Test()
         // {
             //PlayerSettings.applicationIdentifier = "com.yd.ghost";
@@ -489,27 +489,27 @@ Used Time: {report.summary.buildEndedAt.Subtract(report.summary.buildStartedAt)}
             // Log(PlayerSettings.applicationIdentifier);
         // }
 
-        //[MenuItem("Build/Get Build Number")]
+        //[MenuItem("GoPlay/Build/Get Build Number")]
         //static void BuildNumber()
         //{
         //    Log("Current/Last: " + PlayerSettings.Android.bundleVersionCode + "/" + AndroidLastBuildVersionCode);
         //}
 
-        //[MenuItem("Build/Build Number/Up Build Number")]
+        //[MenuItem("GoPlay/Build/Build Number/Up Build Number")]
         //static void BuildNumberUp()
         //{
         //    PlayerSettings.Android.bundleVersionCode++;
         //    BuildNumber();
         //}
 
-        //[MenuItem("Build/Build Number/Down Build Number")]
+        //[MenuItem("GoPlay/Build/Build Number/Down Build Number")]
         //static void BuildNumberDown()
         //{
         //    PlayerSettings.Android.bundleVersionCode--;
         //    BuildNumber();
         //}
 
-        //[MenuItem("Build/Build All")]
+        //[MenuItem("GoPlay/Build/Build All")]
         //static void BuildAll()
         //{
         //    var buildTargetLeft = new List<BuildTarget>(targetToBuildAll);
@@ -526,7 +526,7 @@ Used Time: {report.summary.buildEndedAt.Subtract(report.summary.buildStartedAt)}
         //    }
         //}
 
-        [MenuItem("Build/Clear Cache")]
+        [MenuItem("GoPlay/Build/Clear Cache")]
         static void ClearCache()
         {
             if (Caching.ClearCache())

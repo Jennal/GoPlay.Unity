@@ -54,7 +54,7 @@ MonoBehaviour:
 
         const string TPL_LINE_PREFIX = "  ";
         
-        // [MenuItem("Excel/Export Assets (Pure)", false, 5)]
+        // [MenuItem("GoPlay/Excel/Export Assets (Pure)", false, 5)]
         public static void Execute()
         {
             PrepareHooks();

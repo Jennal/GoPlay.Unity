@@ -21,7 +21,7 @@ namespace GoPlay.Editor.ExcelModifiers
         };
         public static int xlsStartLine => ExporterConsts.LINE_START;
         
-        [MenuItem("Excel/Export VFXAssets", false)]
+        [MenuItem("GoPlay/Excel/Export VFXAssets", false)]
         public static void Execute()
         {
             ExportExcelSheet();

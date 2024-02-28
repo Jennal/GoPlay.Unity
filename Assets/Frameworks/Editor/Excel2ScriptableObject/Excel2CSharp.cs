@@ -187,7 +187,7 @@ namespace GoPlay.Managers
 
 ";
 
-        [MenuItem("Excel/Generate Code", false, 3)]
+        [MenuItem("GoPlay/Excel/Generate Code", false, 3)]
         public static void Execute()
         {
             if (!DoExecute()) return;

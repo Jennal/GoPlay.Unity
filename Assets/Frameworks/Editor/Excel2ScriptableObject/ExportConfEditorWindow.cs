@@ -9,7 +9,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
     {
         private ExportConf _data;
         
-        [MenuItem("Excel/Setup", false)]
+        [MenuItem("GoPlay/Excel/Setup", false)]
         public static void Open()
         {
             var win = GetWindow<ExportConfEditorWindow>();

@@ -14,7 +14,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
 {
     public class Excel2Enum
     {
-        [MenuItem("Excel/Generate Enum", false, 3)]
+        [MenuItem("GoPlay/Excel/Generate Enum", false, 3)]
         public static void Execute()
         {
             if (!DoExecute()) return;

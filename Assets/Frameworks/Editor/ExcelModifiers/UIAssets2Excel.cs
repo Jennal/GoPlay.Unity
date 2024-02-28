@@ -14,7 +14,7 @@ namespace GoPlay.Editor.ExcelModifiers
         public static readonly string xlsSheet = "#UIAssets";
         public static int xlsStartLine => ExporterConsts.LINE_START;
         
-        [MenuItem("Excel/Export UIAssets", false)]
+        [MenuItem("GoPlay/Excel/Export UIAssets", false)]
         public static void Execute()
         {
             ExportExcelSheet();
