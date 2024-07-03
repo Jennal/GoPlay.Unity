@@ -1,5 +1,4 @@
 ﻿using System;
-using GoPlay.Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -68,7 +67,6 @@ namespace GoPlay.UI.Common
 
             m_lastClickTime = Time.realtimeSinceStartup;
             base.OnPointerClick(eventData);
-            AudioManager.Instance.PlaySfx(Data.Consts.Audio.ID_2_CLICK);
         }
 
         public override void OnPointerUp(PointerEventData eventData)
