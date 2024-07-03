@@ -13,7 +13,7 @@ namespace GoPlay.Editor.ExcelModifiers
     public class VFXAssets2Excel
     {
         public static readonly string xlsFile = Path.Combine(ExporterConsts.xlsFolder, "特效表.xlsx");
-        public static readonly string xlsSheet = "#VFXAssets@ZH_CN";
+        public static readonly string xlsSheet = "#VFXAssets@EN_US";
         public static readonly string[] projectVFXdirs = new []
         {
             "Assets/Game/Res",

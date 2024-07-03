@@ -228,6 +228,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
                     {
                         var name = table.Name;
                         if (name == null || !name.StartsWith(ExporterConsts.exportPrefix)) continue;
+                        if (!FilterPlatform(table)) continue;
 
                         //创建依赖关系
                         CreateDependancy(table);
@@ -245,10 +246,20 @@ namespace GoPlay.Editor.Excel2ScriptableObject
                     OnAllExportFinish(xls, excelReader);
                 }
             }
+            catch (Exception e)
+            {
+                ExporterUtils.ShowError($"{xls} => {e}");
+            }
             finally
             {
                 File.Delete(tmpFileName);
             }
+        }
+
+        private static bool FilterPlatform(ExcelWorksheet table)
+        {
+            var fieldPlatforms = ExporterUtils.GetFieldPlatform(table);
+            return fieldPlatforms.Any(o => o.Contains(ExporterConsts.exportPlatform));
         }
 
         private static void OnAllExportBegin(string xls, ExcelPackage excel)

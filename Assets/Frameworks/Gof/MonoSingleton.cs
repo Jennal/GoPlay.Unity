@@ -32,12 +32,13 @@ public abstract class MonoSingleton<T> : MonoBehaviour
             return;
         }
 
+        transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
         gameObject.name = typeof(T).Name;
         s_instance = this as T;
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if (s_instance == this) s_instantiated = false;
     }

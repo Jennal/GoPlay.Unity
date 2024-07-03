@@ -198,7 +198,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
         /// <param name="separator"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static int[] ConvertInt32Array(string tableName, string name, string type, int row, string val, string separator="")
+        public static int[] ConvertInt32Array(string tableName, string name, string type, int row, string val, string separator=",;")
         {
             if (string.IsNullOrEmpty(separator)) separator = ExporterConsts.splitOutter;
 
@@ -229,7 +229,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
         /// <param name="separator"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static float[] ConvertFloatArray(string tableName, string name, string type, int row, string val, string separator="")
+        public static float[] ConvertFloatArray(string tableName, string name, string type, int row, string val, string separator=",;")
         {
             if (string.IsNullOrEmpty(separator)) separator = ExporterConsts.splitOutter;
 
@@ -258,7 +258,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
         /// <param name="val"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static string[] ConvertStringArray(string tableName, string name, string type, int row, string val, string separator="")
+        public static string[] ConvertStringArray(string tableName, string name, string type, int row, string val, string separator=",;")
         {
             if (string.IsNullOrEmpty(separator)) separator = ExporterConsts.splitOutter;
 
@@ -282,7 +282,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
         /// <param name="val"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static Vector2 ConvertVector2(string tableName, string name, string type, int row, string val, string separator="")
+        public static Vector2 ConvertVector2(string tableName, string name, string type, int row, string val, string separator=",;")
         {
             if (string.IsNullOrEmpty(separator)) separator = ExporterConsts.splitOutter;
 
@@ -315,7 +315,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
         /// <param name="val"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static Vector2Int ConvertVector2Int(string tableName, string name, string type, int row, string val, string separator="")
+        public static Vector2Int ConvertVector2Int(string tableName, string name, string type, int row, string val, string separator=",;")
         {
             if (string.IsNullOrEmpty(separator)) separator = ExporterConsts.splitOutter;
 

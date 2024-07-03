@@ -13,7 +13,7 @@ namespace GoPlay.Editor.Excel2ScriptableObject
         public const string exportPlatform = "c";
         
         public const string exportVariantSplit = "@";
-        public const string defaultVariant = "zh_cn";
+        public const string defaultVariant = "en_us";
 
         public const string splitOutterArr = "$";
         public const string splitOutter = "|";
@@ -27,8 +27,8 @@ namespace GoPlay.Editor.Excel2ScriptableObject
 
         public static readonly string[] languageDefaults = new[]
         {
-            "zh_cn",
             "en_us",
+            "zh_cn",
         };
 
         public static readonly string[] enumNamespaces = new[]

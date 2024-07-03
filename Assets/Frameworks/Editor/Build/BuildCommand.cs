@@ -26,10 +26,10 @@ namespace GoPlay.Editor.Build
     /// 
     public class BuidCommand : MonoBehaviour
     {
-        static readonly string androidKeystoreName = Path.Combine(Application.dataPath, "../Keys/spck.jks");
-        const string androidKeystorePass = "GoPlay904";
-        const string androidKeyaliasName = "GoPlay spck";
-        const string androidKeyaliasPass = "GoPlay904";
+        static readonly string androidKeystoreName = Path.Combine(Application.dataPath, "../Keys/android.jks");
+        const string androidKeystorePass = "w2d2024";
+        const string androidKeyaliasName = "fish";
+        const string androidKeyaliasPass = "w2d2024";
 
         // const string scriptDefineSymbols = "ODIN_INSPECTOR;TextMeshPro;AMPLIFY_SHADER_EDITOR";
 

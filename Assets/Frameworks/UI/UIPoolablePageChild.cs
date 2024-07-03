@@ -24,7 +24,7 @@ namespace GoPlay.Framework.UI
             Open(args);
         }
 
-        public virtual void OnDespown()
+        public virtual void OnDespawn()
         {
             OnClose();
             gameObject.SetActive(false);

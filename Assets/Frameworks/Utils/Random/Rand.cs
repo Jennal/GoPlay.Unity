@@ -402,7 +402,7 @@ namespace GoPlay.Utils
         /// </summary>
         /// <param name="conf"></param>
         /// <returns></returns>
-        public static int RandomConfInt(string conf, string arrSplit = "|", string randSplit = ";") {
+        public static int RandomConfInt(string conf, string arrSplit = ";", string randSplit = ",") {
             bool formatError = false;
             var arr = conf.Split(arrSplit.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             var list = new List<RandomItem<int>>();
@@ -440,7 +440,7 @@ namespace GoPlay.Utils
         /// </summary>
         /// <param name="conf"></param>
         /// <returns></returns>
-        public static long RandomConfLong(string conf, string arrSplit = "|", string randSplit = ";") {
+        public static long RandomConfLong(string conf, string arrSplit = ";", string randSplit = ",") {
             bool formatError = false;
             var arr = conf.Split(arrSplit.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             var list = new List<RandomItem<long>>();
@@ -1021,6 +1021,11 @@ namespace GoPlay.Utils
             delta = Mathf.Min(sigma, delta);
 
             return Range(mu - delta, mu + delta);
+        }
+
+        public static float Sign(float rate=0.5f)
+        {
+            return True(rate) ? 1f : -1f;
         }
     }
 }

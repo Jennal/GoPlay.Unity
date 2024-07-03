@@ -13,17 +13,22 @@ namespace GoPlay.Globals
 
         private void OnEnable()
         {
-            Application.wantsToQuit += () => IsQuitting = true;
+            Application.wantsToQuit += () =>
+            {
+                OnBeforeApplicationQuit();
+                return IsQuitting = true;
+            };
             OnEnabled();
         }
 
         partial void OnEnabled();
-
+        partial void OnBeforeApplicationQuit();
+        
         public static void Init(string key)
         {
             var persistantService = ServiceManager.Get<PersistantService>();
             var gv = Instance;
-            gv.LocalData = persistantService.Get($"GoPlay.{key}.local", new LocalData
+            gv.LocalData = persistantService.Get($"GoPlay.{key}.local", () => new LocalData
             {
                 Language = Application.systemLanguage.GetVariant(),
             });

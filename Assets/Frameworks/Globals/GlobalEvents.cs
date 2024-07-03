@@ -18,5 +18,6 @@ namespace GoPlay.Globals
         public static UIEvent UIClosed = new UIEvent();
         public static WindowEvent WindowOpened = new WindowEvent();
         public static WindowEvent WindowClosed = new WindowEvent();
+        
     }
 }

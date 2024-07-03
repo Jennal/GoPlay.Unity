@@ -39,7 +39,7 @@ namespace GoPlay
         public static implicit operator GameObject(GameObjectRefer data)
         {
 #if UNITY_EDITOR
-            if (data._gameObject) return data._gameObject;
+            if (data && data._gameObject) return data._gameObject;
 #endif
             
             if (!data) return null;

@@ -43,7 +43,11 @@ using UnityEngine.Networking;
             var opList = new Dictionary<AssetInfo, AsyncOperation>();
             foreach (var assetInfo in assetInfosForLoad)
             {
-                
+#if UNITY_WEBGL && !UNITY_EDITOR
+                var path = assetInfo.Name.StreamingAssetsPath();
+                var op = UnityWebRequestAssetBundle.GetAssetBundle(path, assetInfo.Version);
+                opList.Add(assetInfo, op.SendWebRequest());
+#else
                 //读取更新后的文件
                 var path = assetInfo.Name.PersistentAssetsPath();
                 if (File.Exists(path))
@@ -58,6 +62,7 @@ using UnityEngine.Networking;
                     var op = StreamingAssetReader.LoadAssetBundleAsyncOperation(path, assetInfo.Version);
                     opList.Add(assetInfo, op);
                 }
+#endif
             }
 
             foreach (var item in opList)
@@ -73,16 +78,19 @@ using UnityEngine.Networking;
                         Assetbundles.Add(request.assetBundle);
                         break;
                     case UnityWebRequestAsyncOperation request:
-                        if (request.webRequest.isDone)
+                        if (request.webRequest.result == UnityWebRequest.Result.Success)
                         {
                             var assetBundle = DownloadHandlerAssetBundle.GetContent(request.webRequest);
                             Assetbundles.Add(assetBundle);
                         }
-
-                        //失败
-                        assetInfosFailed.Add(assetInfo);
-                        OnErrorEvent(new Exception(string.Format("Loading Assetbundle failed: {0}[{1}]", assetInfo.Name,
-                            assetInfo.Version)));
+                        else
+                        {
+                            //失败
+                            assetInfosFailed.Add(assetInfo);
+                            OnErrorEvent(new Exception(string.Format("Loading Assetbundle failed: {0}[{1}]",
+                                assetInfo.Name,
+                                assetInfo.Version)));
+                        }
                         break;
                 }
                 

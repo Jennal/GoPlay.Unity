@@ -38,8 +38,9 @@ namespace GoPlay.Services
         /// <summary>
         /// 返回Pool时 
         /// </summary>
-        public virtual void OnDespown()
+        public virtual void OnDespawn()
         {
+            if (!gameObject) return;
             gameObject.SetActive(false);
         }
 

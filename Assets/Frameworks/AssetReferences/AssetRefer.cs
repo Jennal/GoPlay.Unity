@@ -32,6 +32,11 @@ namespace GoPlay
             return AssetManager.Instance.LoadAsset<GameObject>(AssetBundle, AssetName);
         }
 
+        public Material LoadMaterial()
+        {
+            return AssetManager.Instance.LoadAsset<Material>(AssetBundle, AssetName);
+        }
+        
         public T Load<T>()
             where T : Object
         {
@@ -67,6 +72,11 @@ namespace GoPlay
         public Task<GameObject> LoadPrefabAsync()
         {
             return AssetManager.Instance.LoadAssetAsync<GameObject>(AssetBundle, AssetName);
+        }
+        
+        public Task<Material> LoadMaterialAsync()
+        {
+            return AssetManager.Instance.LoadAssetAsync<Material>(AssetBundle, AssetName);
         }
 
         public Task<T> LoadAsync<T>()

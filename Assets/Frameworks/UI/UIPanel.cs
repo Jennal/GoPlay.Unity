@@ -3,14 +3,17 @@ using System.Threading.Tasks;
 using Asyncoroutine;
 using GoPlay.Globals;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace GoPlay.Framework.UI
 {
     public abstract class UIPanel : UIBehaviour
     {
-        [HideInInspector]
-        public RectTransform RootNode;
+        [HideInInspector] public UnityEvent OnOpenEvent = new UnityEvent();
+        [HideInInspector] public UnityEvent OnCloseEvent = new UnityEvent();
+        
+        [HideInInspector] public RectTransform RootNode;
         
         protected override void Awake() 
         {
@@ -26,6 +29,7 @@ namespace GoPlay.Framework.UI
         protected override void OnDisable()
         {
             base.OnDisable();
+            OnCloseEvent.Invoke();
             GlobalEvents.UIClosed.Invoke(this);
         }
 
@@ -66,6 +70,7 @@ namespace GoPlay.Framework.UI
         public virtual async Task OpenAsync(params object[] data)
         {
             SetData(data);
+            OnOpen();
             await OpenCoroutine();
         }
         
@@ -82,6 +87,7 @@ namespace GoPlay.Framework.UI
         protected virtual IEnumerator OpenCoroutine()
         {
             yield return OpenDisplay();
+            OnOpenEvent.Invoke();
             GlobalEvents.UIOpened.Invoke(this);
         }
         

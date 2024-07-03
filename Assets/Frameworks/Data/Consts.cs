@@ -13,7 +13,7 @@ namespace GoPlay.Data
         
         public static class Language
         {
-            public const string Default = "zh_cn";
+            public const string Default = "en_us";
         }
         
         static partial void Init();

@@ -41,6 +41,8 @@ namespace GoPlay.Editor.ExcelModifiers
                     
                     UIPanel cls = AssetDatabase.LoadAssetAtPath<UIWindow>(assetPath);
                     if (!cls) cls = AssetDatabase.LoadAssetAtPath<UIPoolableWindow>(assetPath);
+                    if (!cls) cls = AssetDatabase.LoadAssetAtPath<UIWidget>(assetPath);
+                    if (!cls) cls = AssetDatabase.LoadAssetAtPath<UIPoolableWidget>(assetPath);
                     if (!cls) continue;
 
                     // Debug.Log($"Checking {assetPath}");

@@ -15,8 +15,9 @@ namespace GoPlay.Editor.Excel2ScriptableObject.TypeResolvers
         public override object GetValue(ExcelWorksheet sheet, string columnName, ExcelRangeBase value)
         {
             var val = value.Value.ToString();
-            var bytes = Encoding.Default.GetBytes(val);
-            return Encoding.UTF8.GetString(bytes);
+            // var bytes = Encoding.Default.GetBytes(val);
+            // return Encoding.UTF8.GetString(bytes);
+            return val;
         }
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797a7a672e9045bc99e30af4abbc3e9c, type: 3}
   m_Name: Excel2Unity
   m_EditorClassIdentifier: 
-  xlsFolder: ./Excels
-  defaultLanguage: zh_cn
-  languages: zh_cn,en_us
+  xlsFolder: ../../fish-excels
+  defaultLanguage: en_us
+  languages: en_us,zh_cn

@@ -274,8 +274,9 @@ namespace GoPlay.Services
             where T : MonoBehaviour, IPoolable
         {
             if (!Instance) return;
+            if (!obj || !obj.gameObject) return;
             
-            obj.OnDespown();
+            obj.OnDespawn();
             var item = obj.Pool;
             if (item == null)
             {

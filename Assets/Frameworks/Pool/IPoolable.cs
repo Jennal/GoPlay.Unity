@@ -18,7 +18,7 @@ namespace GoPlay.Services
         /// <summary>
         /// 返回Pool时 
         /// </summary>
-        void OnDespown();
+        void OnDespawn();
 
         /// <summary>
         /// 回归Pool

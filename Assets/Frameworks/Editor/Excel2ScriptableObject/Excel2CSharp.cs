@@ -248,6 +248,7 @@ namespace GoPlay.Managers
                         {
                             var name = sheet.Name;
                             if (name == null || !name.StartsWith(ExporterConsts.exportPrefix)) continue;
+                            if (!FilterPlatform(sheet)) continue;
 
 //                            Debug.Log($"{xls} => {name}");   
                             if (EditorUtility.DisplayCancelableProgressBar("",
@@ -256,6 +257,11 @@ namespace GoPlay.Managers
                             ConvertToClasses(xls, sheet);
                         }
                     }
+                }
+                catch
+                {
+                    EditorUtility.ClearProgressBar();
+                    throw;
                 }
                 finally
                 {
@@ -272,6 +278,12 @@ namespace GoPlay.Managers
             _finishedTypeNames = null;
             
             return true;
+        }
+        
+        private static bool FilterPlatform(ExcelWorksheet table)
+        {
+            var fieldPlatforms = ExporterUtils.GetFieldPlatform(table);
+            return fieldPlatforms.Any(o => o.Contains(ExporterConsts.exportPlatform));
         }
 
         private static void HookAllFinish()
@@ -493,15 +505,24 @@ namespace GoPlay.Managers
                 else sbFields += SB_FIELDS_TEMPLETE.Replace("{fieldName}", fieldName);
 
                 //Equals
-                if (fieldType == "float")
+                var notEquals = resolver.GetScriptNotEquals(fieldName);
+                if (string.IsNullOrEmpty(notEquals))
                 {
-                    if (isArray) eqFields += EQ_FLOAT_FIELDS_ARRAY_TEMPLETE.Replace("{fieldName}", fieldName);
-                    else eqFields += EQ_FLOAT_FIELDS_TEMPLETE.Replace("{fieldName}", fieldName);
+                    if (fieldType == "float")
+                    {
+                        if (isArray) eqFields += EQ_FLOAT_FIELDS_ARRAY_TEMPLETE.Replace("{fieldName}", fieldName);
+                        else eqFields += EQ_FLOAT_FIELDS_TEMPLETE.Replace("{fieldName}", fieldName);
+                    }
+                    else
+                    {
+                        if (isArray) eqFields += EQ_FIELDS_ARRAY_TEMPLETE.Replace("{fieldName}", fieldName);
+                        else eqFields += EQ_FIELDS_TEMPLETE.Replace("{fieldName}", fieldName);
+                    }
                 }
                 else
                 {
-                    if (isArray) eqFields += EQ_FIELDS_ARRAY_TEMPLETE.Replace("{fieldName}", fieldName);
-                    else eqFields += EQ_FIELDS_TEMPLETE.Replace("{fieldName}", fieldName);
+                    eqFields += @"
+			" + notEquals;
                 }
 
                 //Clone

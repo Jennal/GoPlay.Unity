@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace GoPlay.Framework.UI
 {
-    public class UIManager : MonoSingleton<UIManager>
+    public partial class UIManager : MonoSingleton<UIManager>
     {
 #if ODIN_INSPECTOR_3
         [BoxGroup("Status"), ShowInInspector, ReadOnly]
@@ -78,7 +78,29 @@ namespace GoPlay.Framework.UI
         {
             var panel = Create<T>();
             panel.Open(data);
-
+        
+            return panel;
+        }
+        
+        public static T Open<T>(Transform root,params object[] data)
+            where T : UIPanel
+        {
+            var prefab = UILoader.Load<T>();
+            //Debug.Log($"Open: prefab {prefab.name}");
+            var go = Instantiate(prefab, root);
+            var panel = go.GetComponent<T>();
+            panel.Open(data);
+            return panel;
+        }
+        
+        public static T Open<T>(GameObject prefab, Transform root, object data=null)
+            where T : UIPanel
+        {
+            var go = Instantiate(prefab, root, false);
+            go.transform.localPosition = Vector3.zero;
+            var panel = go.GetComponent<T>();
+            panel.Open(data);
+        
             return panel;
         }
 
@@ -117,11 +139,21 @@ namespace GoPlay.Framework.UI
             return Instance.transform;
         }
 
-        public static async Task<T> OpenAsync<T>(object data=null)
+        public static async Task<T> OpenAsync<T>(GameObject prefab, Transform root,object data = null) 
+            where T : UIPanel
+        {
+            var go = Instantiate(prefab, root, false);
+            go.transform.localPosition = Vector3.zero;
+            var panel = go.GetComponent<T>();
+            await panel.OpenAsync(data);
+            return panel;
+        }
+        
+        public static async Task<T> OpenAsync<T>(params object[] data)
             where T : UIPanel
         {
             var prefab = await UILoader.LoadAsync<T>();
-            
+            //Debug.Log($"OpenAsync: prefab {prefab.name}");
             var root = GetRoot<T>();
             var go = Instantiate(prefab, root);
             var panel = go.GetComponent<T>();
@@ -130,7 +162,34 @@ namespace GoPlay.Framework.UI
             return panel;
         }
         
-        public static async Task<T> GetOrOpenAsync<T>(object data=null)
+        public static async Task<T> OpenAsync<T>(Transform root,params object[] data)
+            where T : UIPanel
+        {
+            var prefab = await UILoader.LoadAsync<T>();
+            //Debug.Log($"OpenAsync: prefab {prefab.name}");
+            var go = Instantiate(prefab, root);
+            var panel = go.GetComponent<T>();
+            
+            await panel.OpenAsync(data);
+            return panel;
+        }
+        
+        public static async Task<UIPanel> OpenAsync(string typeName, params object[] data)
+        {
+            var prefab = await UILoader.LoadAsync(typeName);
+            //Debug.Log($"OpenAsync: prefab {prefab.name}");
+            var root = GetRoot<UIPageChild>();
+            var go = Instantiate(prefab, root);
+            var panel = go.GetComponent<UIPanel>();
+            
+            await panel.OpenAsync(data);
+            return panel;
+        }
+        
+        
+        
+        
+        public static async Task<T> GetOrOpenAsync<T>(params object[] data)
             where T : UIPanel
         {
             var panel = Get<T>();
@@ -194,6 +253,8 @@ namespace GoPlay.Framework.UI
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
+                if (!Instance.CurrentPage) return;
+                
                 var topWindow = Instance.CurrentPage.ChildrenWindows.LastOrDefault();
                 if (topWindow != default)
                 {

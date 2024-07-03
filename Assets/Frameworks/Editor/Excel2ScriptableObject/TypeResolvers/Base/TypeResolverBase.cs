@@ -25,6 +25,11 @@ namespace GoPlay.Editor.Excel2ScriptableObject.TypeResolvers
         {
             return $"({TypeName}){fieldName}.Clone()";
         }
+
+        public virtual string GetScriptNotEquals(string fieldName)
+        {
+            return string.Empty;
+        }
         
         public abstract object GetValue(ExcelWorksheet sheet, string columnName, ExcelRangeBase value);
     }

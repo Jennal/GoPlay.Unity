@@ -12,6 +12,9 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Object = UnityEngine.Object;
+#if UNITY_WEBGL || UNITY_EDITOR
+using UnityEngine.Networking;
+#endif
 #if UNITY_EDITOR
 using UnityEditor;
 #pragma warning disable 414
@@ -74,18 +77,20 @@ namespace GoPlay.AssetManagement
 #if UNITY_ANDROID
                 return RuntimePlatform.Android;
 #elif UNITY_IOS
-                 return RuntimePlatform.IPhonePlayer;
+                return RuntimePlatform.IPhonePlayer;
+#elif UNITY_WEBGL
+                return RuntimePlatform.WebGLPlayer;
 #elif UNITY_STANDALONE_OSX
-                 return RuntimePlatform.OSXPlayer;
+                return RuntimePlatform.OSXPlayer;
 #elif UNITY_STANDALONE_WIN
                 return RuntimePlatform.WindowsPlayer;
 #endif
             }
         }
 
-        public async Task Init()
+        public IEnumerator Init()
         {
-            await InitVersion();
+            yield return InitVersion();
         }
         
         private IEnumerator InitVersion()
@@ -95,16 +100,28 @@ namespace GoPlay.AssetManagement
 #else
             while (_isInitingVersion) yield return null;
             if (assetBundleManifest != null) yield break;
+#if !UNITY_WEBGL
             while (!Caching.ready) yield return null;
+#endif
 
+            Debug("AssetManager.InitVersion");
             _isInitingVersion = true;
             
             //版本信息不走Caching，强制读取最新，防止之后读取的Assetbundle都是缓存过的无法更新
             var name = platform.ToPath();
             var path = name.StreamingAssetsPath();
+            Debug($"load Manifest: {path}");
+#if UNITY_WEBGL && !UNITY_EDITOR
+            var op = UnityWebRequestAssetBundle.GetAssetBundle(path);
+            yield return op.SendWebRequest();
+            var bundle = DownloadHandlerAssetBundle.GetContent(op);
+            assetBundleManifest = bundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+#else
             var op = StreamingAssetReader.LoadAssetBundleFromFileAsync(path);
             yield return op;
             assetBundleManifest = op.assetBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+#endif
+            Debug($"assetBundleManifest: {assetBundleManifest}");
             // var asyncLocalLoader = new AyncLoadLocalAssetbundles(new List<AssetInfo>
             // {
             //     new AssetInfo
@@ -169,6 +186,7 @@ namespace GoPlay.AssetManagement
         /// <returns></returns>
         public IEnumerator LoadAssetBundles(params string[] assetbundleNames)
         {
+            // Debug($"AssetManager.LoadAssetBundles: {string.Join(", ", assetbundleNames)}");
             yield return InitVersion();
 
             if (assetbundleNames == null || assetbundleNames.Length == 0) yield break;
@@ -620,6 +638,15 @@ namespace GoPlay.AssetManagement
             return asset;
         }
 
+        public void ShowLoadedAssetBundles()
+        {
+            var bundles = AssetBundle.GetAllLoadedAssetBundles();
+            foreach (var bundle in bundles)
+            {
+                Debug($"Loaded AssetBundle: {bundle}");
+            }
+        }
+        
         #region Log
 
         public static void Debug(string fmt, params object[] args)
@@ -652,12 +679,20 @@ namespace GoPlay.AssetManagement
 
         private static string Time()
         {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return $"[{UnityEngine.Time.time:F3}]";
+#else
             return $"[<color=green>{UnityEngine.Time.time:F3}</color>]";
+#endif
         }
 
         private static string Prefix()
         {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return $"[AssetManager] ";
+#else
             return $"<color={Color.blue.ToLogColor()}>[AssetManager]</color> ";
+#endif
         }
 
         #endregion
