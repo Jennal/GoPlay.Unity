@@ -1,22 +1,25 @@
 using GoPlay;
 using GoPlay.Core.Protocols;
 using GoPlay.Core.Transport.NetCoreServer;
+using GoPlay.Demo;
 using GoPlayProj.Extension.Frontend;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GoPlayClient : MonoBehaviour
 {
+    public string name = "Me";
+    public InputField inputField;
+    public Text chatText;
+    
     private Client<NcClient> _client;
     public Client<NcClient> Client => _client;
 
     private Client<NcClient> GetClient()
     {
-        if (_client == null)
-        {
-            _client = new Client<NcClient>();
-        }
+        if (_client != null) return _client;
         
+        _client = new Client<NcClient>();
         _client.OnConnected += () =>
         {
             Debug.Log("Connected!");
@@ -36,7 +39,13 @@ public class GoPlayClient : MonoBehaviour
         {
             Debug.Log($"Recv Push: {data.Value}");
         });
-
+        
+        _client.AddListener(ProtocolConsts.Push_ChatPush, (ChatData data) =>
+        {
+            Debug.Log($"Recv Chat Push: {data}");
+            chatText.text += $"[{data.Name}]: {data.Content}\n";
+        });
+        
         return _client;
     }
 
@@ -88,5 +97,19 @@ public class GoPlayClient : MonoBehaviour
         {
             Value = "Test Notify"
         });
+    }
+
+    public async void Send()
+    {
+        var status = await GetClient().Chat_Send(new ChatData
+        {
+            Name = "Test",
+            Content = inputField.text
+        });
+        Debug.Log($"Response: {status}");
+        if (status.Code == StatusCode.Success)
+        {
+            inputField.text = "";
+        }
     }
 }
