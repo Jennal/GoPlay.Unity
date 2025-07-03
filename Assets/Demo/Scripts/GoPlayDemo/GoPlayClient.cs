@@ -2,6 +2,7 @@ using GoPlay;
 using GoPlay.Core.Protocols;
 using GoPlay.Core.Transport.NetCoreServer;
 using GoPlay.Demo;
+using GoPlay.Network;
 using GoPlayProj.Extension.Frontend;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ public class GoPlayClient : MonoBehaviour
         if (_client != null) return _client;
         
         _client = new Client<NcClient>();
+        _client.MainThreadActionRunner = UnityMainThreadActionRunner.Instance;
         _client.OnConnected += () =>
         {
             Debug.Log("Connected!");
@@ -103,7 +105,7 @@ public class GoPlayClient : MonoBehaviour
     {
         var status = await GetClient().Chat_Send(new ChatData
         {
-            Name = "Test",
+            Name = name,
             Content = inputField.text
         });
         Debug.Log($"Response: {status}");
