@@ -10,6 +10,8 @@ namespace GoPlayProj.Extension.Frontend
     public static partial class ProtocolConsts
     {
         //Protocols
+        public const string AriPlane_ChangeAirPos = "ariplane.changairpos";
+        public const string AriPlane_Register = "ariplane.register";
         public const string Chat_Send = "chat.chat.send";
         public const string Test_Echo = "test.echo";
         public const string Test_Error = "test.err";
@@ -17,12 +19,25 @@ namespace GoPlayProj.Extension.Frontend
         public const string Test_Notify = "test.notify";
         
         //Pushes
+        public const string Push_AirplanePush_changepos = "airPlane.Push_ChangePos";
+        public const string Push_AirplanePush_join = "airPlane.Push_Join";
+        public const string Push_AirplanePush_offline = "airPlane.Push_OffLine";
         public const string Push_ChatPush = "chat.push";
         public const string Push_TestPush = "test.push";
     }
 
     public static partial class ClientExtensions
     {
+        public static Task<Status> AriPlane_ChangeAirPos(this Client cli, PlayerData arg)
+        {
+            return cli.Request<PlayerData>(ProtocolConsts.AriPlane_ChangeAirPos, arg);
+        }
+
+        public static Task<(Status, GameData)> AriPlane_Register(this Client cli, RegisterAccount arg)
+        {
+            return cli.Request<RegisterAccount, GameData>(ProtocolConsts.AriPlane_Register, arg);
+        }
+
         public static Task<Status> Chat_Send(this Client cli, ChatData arg)
         {
             return cli.Request<ChatData>(ProtocolConsts.Chat_Send, arg);
