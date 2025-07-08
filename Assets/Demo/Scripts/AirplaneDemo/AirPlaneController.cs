@@ -3,6 +3,7 @@ using GoPlay.Demo;
 using GoPlay.Services;
 using UnityEngine;
 using UnityEngine.UI;
+using Vector2 = GoPlay.Demo.Vector2;
 
 public class AirPlaneController : MonoBehaviour, IPoolable
 {
@@ -20,20 +21,20 @@ public class AirPlaneController : MonoBehaviour, IPoolable
     public Action<PlayerData> CallBack;
     private bool canUpdate;
 
-    public void Init(PlayerData _playerData, Action<PlayerData> _callBack, bool _canUpdate)
+    public void Init(PlayerData data, Action<PlayerData> callBack, bool isUpdate)
     {
-        playerData = _playerData;
-        CallBack += _callBack;
-        curPos = new Vector2(_playerData.DVector2.XPos, _playerData.DVector2.YPos);
-        Debug.Log($"初始位置: {curPos.x}, {curPos.y}");
-        canUpdate = _canUpdate;
-        airName.text = _playerData.Name;
+        playerData = data;
+        CallBack += callBack;
+        curPos = data.Pos;
+        Debug.Log($"初始位置: {curPos.X}, {curPos.Y}");
+        canUpdate = isUpdate;
+        airName.text = data.Name;
     }
 
-    public void SetPos(DVector2 dVector2)
+    public void SetPos(Vector2 pos)
     {
-        Debug.Log($"当前位置: {dVector2.XPos}, {dVector2.YPos}");
-        ((RectTransform)transform).anchoredPosition = new Vector2(dVector2.XPos, dVector2.YPos);
+        Debug.Log($"当前位置: {pos.X}, {pos.Y}");
+        ((RectTransform)transform).anchoredPosition = new UnityEngine.Vector2(pos.X, pos.Y);
     }
 
     private void Update()
@@ -49,28 +50,28 @@ public class AirPlaneController : MonoBehaviour, IPoolable
 
         if (x != 0)
         {
-            curPos.x += x * speed;
+            curPos.X += x * speed;
             
-            if (curPos.x >= xMaxLimit)
+            if (curPos.X >= xMaxLimit)
             {
-                curPos.x = xMaxLimit;
+                curPos.X = xMaxLimit;
             }
-            else if (curPos.x <= 0f)
+            else if (curPos.X <= 0f)
             {
-                curPos.x = 0f;
+                curPos.X = 0f;
             }
         }
 
         if (y != 0)
         {
-            curPos.y += y * speed;
+            curPos.Y += y * speed;
             
-            if (curPos.y >= yMaxLimit)
+            if (curPos.Y >= yMaxLimit)
             {
-                curPos.y = yMaxLimit;
-            } else if (curPos.y <= 0f)
+                curPos.Y = yMaxLimit;
+            } else if (curPos.Y <= 0f)
             {
-                curPos.y = 0f;
+                curPos.Y = 0f;
             }
         }
 
@@ -82,14 +83,14 @@ public class AirPlaneController : MonoBehaviour, IPoolable
 
     private void SendData(Vector2 vector2)
     {
-        CallBack.Invoke(new PlayerData()
+        CallBack.Invoke(new PlayerData
         {
-            HumanId = playerData.HumanId,
+            Id = playerData.Id,
             Name = playerData.Name,
-            DVector2 = new DVector2()
+            Pos = new Vector2
             {
-                XPos = vector2.x,
-                YPos = vector2.y
+                X = vector2.X,
+                Y = vector2.Y
             }
         });
     }

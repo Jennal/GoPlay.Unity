@@ -10,37 +10,37 @@ namespace GoPlayProj.Extension.Frontend
     public static partial class ProtocolConsts
     {
         //Protocols
-        public const string AriPlane_ChangeAirPos = "ariplane.changairpos";
-        public const string AriPlane_Register = "ariplane.register";
         public const string Chat_Send = "chat.chat.send";
+        public const string AirPlane_Register = "plane.register";
+        public const string AirPlane_UpdatePos = "plane.update.pos";
         public const string Test_Echo = "test.echo";
         public const string Test_Error = "test.err";
         public const string Test_Inc = "test.inc";
         public const string Test_Notify = "test.notify";
         
         //Pushes
-        public const string Push_AirplanePush_changepos = "airPlane.Push_ChangePos";
-        public const string Push_AirplanePush_join = "airPlane.Push_Join";
-        public const string Push_AirplanePush_offline = "airPlane.Push_OffLine";
+        public const string Push_AirplaneJoin = "airplane.join";
+        public const string Push_AirplaneOffline = "airplane.offline";
+        public const string Push_AirplanePos = "airplane.pos";
         public const string Push_ChatPush = "chat.push";
         public const string Push_TestPush = "test.push";
     }
 
     public static partial class ClientExtensions
     {
-        public static Task<Status> AriPlane_ChangeAirPos(this Client cli, PlayerData arg)
-        {
-            return cli.Request<PlayerData>(ProtocolConsts.AriPlane_ChangeAirPos, arg);
-        }
-
-        public static Task<(Status, GameData)> AriPlane_Register(this Client cli, RegisterAccount arg)
-        {
-            return cli.Request<RegisterAccount, GameData>(ProtocolConsts.AriPlane_Register, arg);
-        }
-
         public static Task<Status> Chat_Send(this Client cli, ChatData arg)
         {
             return cli.Request<ChatData>(ProtocolConsts.Chat_Send, arg);
+        }
+
+        public static Task<(Status, GameData)> AirPlane_Register(this Client cli, RegisterAccount arg)
+        {
+            return cli.Request<RegisterAccount, GameData>(ProtocolConsts.AirPlane_Register, arg);
+        }
+
+        public static Task<Status> AirPlane_UpdatePos(this Client cli, PlayerData arg)
+        {
+            return cli.Request<PlayerData>(ProtocolConsts.AirPlane_UpdatePos, arg);
         }
 
         public static Task<(Status, PbString)> Test_Echo(this Client cli, PbString arg)

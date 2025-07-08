@@ -49,18 +49,18 @@ public class AirPlaneClient : MonoBehaviour
             Debug.Log($"Error: {error}");
         };
         
-        _client.AddListener(ProtocolConsts.Push_AirplanePush_join, (PlayerData data) =>
+        _client.AddListener(ProtocolConsts.Push_AirplaneJoin, (PlayerData data) =>
         {
             JoinAir(data);
         });
         
-        _client.AddListener(ProtocolConsts.Push_AirplanePush_changepos, (PlayerData data) =>
+        _client.AddListener(ProtocolConsts.Push_AirplanePos, (PlayerData data) =>
         {
             if (curPlayerData == null) return;
             OnChangeAirPos(data);
         });
         
-        _client.AddListener(ProtocolConsts.Push_AirplanePush_offline, (PlayerData data) =>
+        _client.AddListener(ProtocolConsts.Push_AirplaneOffline, (PlayerData data) =>
         {
             RemoveAir(data);
         });
@@ -95,11 +95,11 @@ public class AirPlaneClient : MonoBehaviour
     {
         if (inputField.text == "") return;
 
-        var ok = await GetClient().AriPlane_Register(new RegisterAccount()
+        var ok = await GetClient().AirPlane_Register(new RegisterAccount()
         {
             Name = inputField.text
         });
-        curPlayerData = ok.Item2.CurPlayerData;
+        curPlayerData = ok.Item2.CurPlayer;
         InitAirPos(ok.Item2);
         airLoginUI.gameObject.SetActive(false);
         Debug.Log($"Register Success");
@@ -108,7 +108,7 @@ public class AirPlaneClient : MonoBehaviour
     public void InitAirPos(GameData gameData)
     {
         airPlaneControllers =  new List<AirPlaneController>();
-        foreach (var playerData in gameData.PlayerData)
+        foreach (var playerData in gameData.PlayerList)
         {
             var airPlane = PoolService.Instance.Spawn(airPlanePrefab);
             airPlane.GameObject.transform.parent = airPlaneRoot;
@@ -116,8 +116,8 @@ public class AirPlaneClient : MonoBehaviour
             var airController = airPlane.GameObject.GetComponent<AirPlaneController>();
             if (airController != null)
             {
-                airController.Init(playerData, ChangeAirPos, playerData.HumanId == curPlayerData.HumanId);
-                airController.SetPos(playerData.DVector2);
+                airController.Init(playerData, ChangeAirPos, playerData.Id == curPlayerData.Id);
+                airController.SetPos(playerData.Pos);
                 airPlaneControllers.Add(airController);
             }
         }
@@ -131,18 +131,18 @@ public class AirPlaneClient : MonoBehaviour
         var airController = airPlane.GameObject.GetComponent<AirPlaneController>();
         if (airController != null)
         {
-            airController.Init(data, ChangeAirPos, data.HumanId == curPlayerData.HumanId);
-            airController.SetPos(data.DVector2);
+            airController.Init(data, ChangeAirPos, data.Id == curPlayerData.Id);
+            airController.SetPos(data.Pos);
             airPlaneControllers.Add(airController);
         }
     }
     
     public void OnChangeAirPos(PlayerData data)
     {
-        var airPlaneController = airPlaneControllers.FirstOrDefault(o => o.PlayerData != null && o.PlayerData.HumanId == data.HumanId);
+        var airPlaneController = airPlaneControllers.FirstOrDefault(o => o.PlayerData != null && o.PlayerData.Id == data.Id);
         if (airPlaneController != null)
         {
-            airPlaneController.SetPos(data.DVector2);
+            airPlaneController.SetPos(data.Pos);
         }
         else
         {
@@ -152,8 +152,8 @@ public class AirPlaneClient : MonoBehaviour
             var airController = airPlane.GameObject.GetComponent<AirPlaneController>();
             if (airController != null)
             {
-                airController.Init(data, ChangeAirPos, data.HumanId == curPlayerData.HumanId);
-                airController.SetPos(data.DVector2);
+                airController.Init(data, ChangeAirPos, data.Id == curPlayerData.Id);
+                airController.SetPos(data.Pos);
                 airPlaneControllers.Add(airController);
             }
         }
@@ -163,7 +163,7 @@ public class AirPlaneClient : MonoBehaviour
     {
         foreach (var airPlaneController in airPlaneControllers)
         {
-            if (airPlaneController.PlayerData.HumanId == data.HumanId)
+            if (airPlaneController.PlayerData.Id == data.Id)
             {
                 airPlaneControllers.Remove(airPlaneController);
                 airPlaneController.UnSet();
@@ -174,9 +174,9 @@ public class AirPlaneClient : MonoBehaviour
     
     public async void ChangeAirPos(PlayerData playerData)
     {
-        if (playerData.HumanId != curPlayerData.HumanId) return;
-        var ok = await GetClient().AriPlane_ChangeAirPos(playerData);
-        Debug.Log($"ChangeAirPos Success: {playerData.DVector2.XPos}, {playerData.DVector2.YPos}");
+        if (playerData.Id != curPlayerData.Id) return;
+        var ok = await GetClient().AirPlane_UpdatePos(playerData);
+        Debug.Log($"ChangeAirPos Success: {playerData.Pos.X}, {playerData.Pos.Y}");
     }
 
 }
